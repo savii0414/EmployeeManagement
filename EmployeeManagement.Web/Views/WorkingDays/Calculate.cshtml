@@ -1,0 +1,31 @@
+@model EmployeeManagement.Web.Models.WorkingDaysViewModel
+
+@{
+    ViewBag.Title = "Working Days Calculator";
+}
+
+<h2>Working Days Calculator</h2>
+
+@using (Html.BeginForm("Calculate", "WorkingDays", FormMethod.Post))
+{
+@Html.ValidationSummary(true)
+
+<div class="form-group">
+    @Html.LabelFor(m => m.StartDate)
+    @Html.TextBoxFor(m => m.StartDate, new { type = "date", @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.StartDate)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.EndDate)
+    @Html.TextBoxFor(m => m.EndDate, new { type = "date", @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.EndDate)
+</div>
+
+<button type="submit" class="btn btn-primary">Calculate</button>
+}
+
+@if (Model != null && Model.WorkingDays.HasValue)
+{
+<h3>Working Days: @Model.WorkingDays</h3>
+}
