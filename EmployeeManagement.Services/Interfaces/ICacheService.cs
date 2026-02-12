@@ -11,5 +11,7 @@ namespace EmployeeManagement.Services.Interfaces
     {
         T Cached<T>(string key, CacheDelegate<T> method);
         T CachedLong<T>(string key, CacheDelegate<T> method);
+
+        void Remove(string key);
     }
 }

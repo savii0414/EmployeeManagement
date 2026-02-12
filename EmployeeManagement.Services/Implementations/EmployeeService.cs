@@ -19,8 +19,7 @@ namespace EmployeeManagement.Services.Implementations
 
         public IEnumerable<Employee> GetAll()
         {
-            return _cache.Cached("EMP_ALL",
-                () => _repo.GetAll());
+            return _repo.GetAll();
         }
 
         public Employee GetById(int id)
@@ -35,18 +34,24 @@ namespace EmployeeManagement.Services.Implementations
 
             _repo.Add(employee);
             _repo.Save();
+
+            _cache.Remove("EMP_ALL");
         }
 
         public void Update(Employee employee)
         {
             _repo.Update(employee);
             _repo.Save();
+
+            _cache.Remove("EMP_ALL");
         }
 
         public void Delete(int id)
         {
             _repo.Delete(id);
             _repo.Save();
+
+            _cache.Remove("EMP_ALL");
         }
 
         private string GetUserName()

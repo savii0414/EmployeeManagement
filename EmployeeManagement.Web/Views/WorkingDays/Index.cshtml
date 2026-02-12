@@ -1,0 +1,58 @@
+﻿@model EmployeeManagement.Web.Models.WorkingDaysViewModel
+
+@{
+    ViewBag.Title = "Working Days Calculator";
+}
+
+<h2>Working Days Calculator</h2>
+
+@using (Html.BeginForm("Index", "WorkingDays", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.StartDate)
+        @Html.TextBoxFor(m => m.StartDate, new { type = "date", @class = "form-control", id = "StartDate" })
+        @Html.ValidationMessageFor(m => m.StartDate, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.EndDate)
+        @Html.TextBoxFor(m => m.EndDate, new { type = "date", @class = "form-control", id = "EndDate" })
+        @Html.ValidationMessageFor(m => m.EndDate, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Calculate</button>
+}
+
+@if (Model.WorkingDays.HasValue)
+{
+    <div class="alert alert-success mt-3">
+        Total Working Days: <strong>@Model.WorkingDays</strong>
+    </div>
+}
+
+@section scripts {
+    <script>
+        // Disable weekends in date picker
+        function disableWeekends(inputId) {
+            var input = document.getElementById(inputId);
+            if (!input) return;
+
+            input.addEventListener('input', function () {
+                if (!this.value) return;
+                var date = new Date(this.value + 'T00:00'); // ensure correct date parsing
+                var day = date.getDay(); // Sunday = 0, Saturday = 6
+                if (day === 0 || day === 6) {
+                    alert('Weekends are not allowed. Please pick a weekday.');
+                    this.value = ''; // clear invalid selection
+                }
+            });
+        }
+
+        // Apply to StartDate and EndDate
+        disableWeekends('StartDate');
+        disableWeekends('EndDate');
+    </script>
+}

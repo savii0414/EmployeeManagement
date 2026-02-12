@@ -1,33 +1,42 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Dashboard";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+<main class="container my-5">
+    <h1 class="mb-4">Welcome to Employee Management System</h1>
+    <p class="lead">Use the dashboard below to quickly access different sections of the application.</p>
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+    <div class="row mt-5">
+
+        <!-- Employees Card -->
+        <div class="col-md-6 mb-4">
+            <div class="card text-white bg-primary h-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title">Employees</h2>
+                    <p class="card-text">View, create, and manage all employee records.</p>
+                    <a href="@Url.Action("Index", "Employee")" class="btn btn-light">Go to Employees</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Working Days Card -->
+        <div class="col-md-6 mb-4">
+            <div class="card text-white bg-success h-100 shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title">Working Days</h2>
+                    <p class="card-text">Manage working days, schedules, and attendance.</p>
+                    <a href="@Url.Action("Index", "WorkingDays")" class="btn btn-light">Go to Working Days</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="alert alert-info" role="alert">
+                Quick navigation: Click on any card to go directly to that section.
+            </div>
+        </div>
     </div>
 </main>

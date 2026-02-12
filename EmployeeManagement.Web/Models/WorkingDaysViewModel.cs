@@ -13,6 +13,6 @@ namespace EmployeeManagement.Web.Models
         [DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
 
-        public int WorkingDays { get; set; }
+        public int? WorkingDays { get; set; }
     }
 }

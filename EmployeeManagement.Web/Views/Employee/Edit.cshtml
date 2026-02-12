@@ -8,6 +8,8 @@
 
 @using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
+
     @Html.HiddenFor(m => m.Id)
 
     @Html.ValidationSummary(true)
