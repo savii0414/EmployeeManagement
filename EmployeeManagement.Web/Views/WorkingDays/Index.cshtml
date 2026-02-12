@@ -24,6 +24,8 @@
     </div>
 
     <button type="submit" class="btn btn-primary mt-2">Calculate</button>
+    @Html.ActionLink("Back to Home", "Index", "Home", null, new { @class = "btn btn-secondary ms-2 mt-2" })
+
 }
 
 @if (Model.WorkingDays.HasValue)
